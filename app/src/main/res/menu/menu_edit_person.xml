@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.jakub.ortodb.EditPersonActivity">
+    <item
+        android:id="@+id/okButton"
+        android:title="Zatwierdź"
+        android:icon="@drawable/ic_done_black_24dp"
+        android:showAsAction="ifRoom|withText" />
+</menu>

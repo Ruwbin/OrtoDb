@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.jakub.ortodb.ShowPersonActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:id="@+id/infoTable"
+        android:baselineAligned="false">
+        <TableRow>
+            <TextView
+                android:text="Imię"
+                android:padding="3dip" />
+            <EditText
+                android:text=""
+                android:gravity="left"
+                android:padding="3dip"
+                android:id="@+id/imie"
+                android:inputType="textCapWords"
+                android:autoText="false"
+                android:hint="Wpisz imię pacjenta" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:text="Nazwisko"
+                android:padding="3dip" />
+            <EditText
+                android:text=""
+                android:gravity="left"
+                android:padding="3dip"
+                android:inputType="textCapWords"
+                android:id="@+id/nazwisko"
+                android:hint="Wpisz nazwisko pacjenta" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Telefon"
+                android:padding="3dip" />
+            <EditText
+                android:text=""
+                android:gravity="left"
+                android:padding="3dip"
+                android:inputType="textCapWords"
+                android:id="@+id/telefon"
+                android:hint="Wpisz telefon pacjenta" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.jakub.ortodb.ShowPersonActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:id="@+id/infoTable">
+        <TableRow>
+            <TextView
+                android:text="Dzień"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="left"
+                android:padding="10dip"
+                android:id="@+id/wizytaDzien"
+                android:clickable="true"
+                android:onClick="showDatePickerDialog" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Godzina rozpoczęcia"
+                android:padding="3dip" />
+            <TextView
+                android:gravity="left"
+                android:padding="10dip"
+                android:id="@+id/wizytaGodzinaRozpoczecia"
+                android:clickable="true"
+                android:onClick="showTimeBegPickerDialog" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Godzina zakończenia" />
+
+            <TextView
+                android:id="@+id/wizytaGodzinaZakonczenia"
+                android:clickable="true"
+                android:gravity="left"
+                android:onClick="showTimeEndPickerDialog"
+                android:padding="10dip" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:text="Lekarz"
+        android:padding="3dip"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:text="Cel"
+        android:padding="3dip"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapSentences|textMultiLine"
+        android:id="@+id/editPurpose"
+        android:hint="Wpisz cel wizyty" />
+
+</LinearLayout>

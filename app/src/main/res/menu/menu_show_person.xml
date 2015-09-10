@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/addVisit"
+        android:icon="@drawable/ic_event_note_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Dodaj wizytę" />
+    <item
+        android:id="@+id/editButton"
+        android:icon="@drawable/ic_mode_edit_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Edytuj" />
+
+    <item
+        android:id="@+id/callButton"
+        android:icon="@drawable/ic_call_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Zadzwoń" />
+
+    <item
+        android:id="@+id/deleteButton"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Usuń" />
+
+
+</menu>

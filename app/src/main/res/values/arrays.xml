@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="doctors_array">
+        <item>Karina</item>
+        <item>Basia</item>
+    </string-array>
+</resources>

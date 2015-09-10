@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.jakub.ortodb.EditVisitActivity">
+
+    <item
+        android:id="@+id/okButton"
+        android:icon="@drawable/ic_done_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Zatwierdź" />
+    <item
+        android:id="@+id/deleteButton"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:showAsAction="ifRoom|withText"
+        android:title="Usuń" />
+
+</menu>

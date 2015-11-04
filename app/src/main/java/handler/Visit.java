@@ -93,8 +93,8 @@ public class Visit {
     public String toString() {
         return "Visit{" +
                 "id=" + id +
-                ", dataBeg=" + dataBeg +
-                ", dataEnd=" + dataEnd +
+                ", dataBeg=" + CalendarHandler.milisToFullDate(dataBeg) +
+                ", dataEnd=" + CalendarHandler.milisToFullDate(dataEnd) +
                 ", purpose='" + purpose + '\'' +
                 ", patient=" + patient +
                 ", doctor='" + doctor + '\'' +

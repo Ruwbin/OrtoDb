@@ -1,10 +1,21 @@
 package handler;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
+import android.os.Environment;
 import android.provider.BaseColumns;
 import android.provider.CalendarContract;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 /**
  * Created by Jakub on 2015-07-28.
@@ -82,8 +93,8 @@ public class DbHandler extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(PatientEntry.TABLE_CREATE);
-        db.execSQL(VisitsEntry.TABLE_CREATE);
+        //db.execSQL(PatientEntry.TABLE_CREATE);
+        //db.execSQL(VisitsEntry.TABLE_CREATE);
     }
 
     @Override
@@ -91,10 +102,45 @@ public class DbHandler extends SQLiteOpenHelper implements BaseColumns {
        // db.execSQL("DROP TABLE IF EXISTS " + PatientEntry.TABLE_NAME);
        // db.execSQL("DROP TABLE IF EXISTS " + VisitsEntry.TABLE_NAME);
        // onCreate(db);
+
     }
 
     @Override
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
+        //onUpgrade(db, oldVersion, newVersion);
+    }
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    public void exportDatabse(String packageName) {
+        try {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            if (sd.canWrite()) {
+                String currentDBPath = "//data//"+packageName+"//databases//"+DATABASE_NAME+"";
+                String backupDBPath = "backupname2.db";
+                File currentDB = new File(data, currentDBPath);
+                File backupDB = new File(sd, backupDBPath);
+
+                try (BufferedReader br = new BufferedReader(new FileReader(backupDB))) {
+                    String line = null;
+                    while ((line = br.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                }
+
+                System.out.println(sd.getPath());
+                if (currentDB.exists()) {
+                    FileChannel src = new FileInputStream(currentDB).getChannel();
+                    FileChannel dst = new FileOutputStream(backupDB).getChannel();
+                    dst.transferFrom(src, 0, src.size());
+                    src.close();
+                    dst.close();
+                }
+                System.out.println("Success");
+
+            }
+        } catch (Exception e) {
+
+        }
     }
 }

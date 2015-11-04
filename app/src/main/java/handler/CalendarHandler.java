@@ -30,7 +30,12 @@ public class CalendarHandler {
             ContentResolver cr = context.getContentResolver();
             Uri uri = CalendarContract.Calendars.CONTENT_URI;
             String selection = "(" + CalendarContract.Calendars.CALENDAR_DISPLAY_NAME + " = ?)";
-            String[] selectionArgs = new String[]{"Orto"};
+            String[] selectionArgs;
+            if (visit.getDoctor().equals("Basia"))
+                selectionArgs = new String[]{"Basia"};
+            else
+                selectionArgs = new String[]{"Orto"};
+
             Cursor cur = cr.query(uri, EVENT_PROJECTION, selection, selectionArgs, null);
             cur.moveToFirst();
             long calID = cur.getLong(0);
@@ -48,11 +53,11 @@ public class CalendarHandler {
                 values.put(CalendarContract.Events.CALENDAR_ID, calID);
                 values.put(CalendarContract.Events.EVENT_TIMEZONE, "Europe/Warsaw");
 
-                if (visit.getDoctor().equals("Basia"))
+                /*if (visit.getDoctor().equals("Basia"))
                     values.put(CalendarContract.Events.EVENT_COLOR, Color.rgb(255, 97, 3));
                 else
                     values.put(CalendarContract.Events.EVENT_COLOR, Color.rgb(148, 176, 1));
-
+                */
 
             }
 

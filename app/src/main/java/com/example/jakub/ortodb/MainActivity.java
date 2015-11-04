@@ -103,14 +103,39 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_main);
+
+
+
         activityConstraint = null;
         patientsHandler = new PatientsHandler(this);
         DbHandler handler = new DbHandler(this);
+        handler.exportDatabse(getPackageName());
         db = handler.getWritableDatabase();
         ListView listView = (ListView) findViewById(R.id.mainList);
         orderType = DbHandler.PatientEntry.KEY_LAST_NAME;
         cursorAdapter = new MainCursorAdapter(this, myQueryProvider.runQuery(null), 0);
         progressBar = (ProgressBar) findViewById(R.id.progressBarLoading);
+
+
+        /*{ get backup file ;)
+            String str = Environment.getExternalStorageDirectory().getPath() + "/backupname.db";
+            File f = new File(str);
+            File f2 = this.getDatabasePath(DbHandler.DATABASE_NAME);
+            try {
+                FileInputStream fis = new FileInputStream(f);
+                byte[] data = new byte[(int) f.length()];
+                fis.read(data);
+                fis.close();
+
+                FileOutputStream fos = new FileOutputStream(f2);
+                fos.write(data);
+                fos.close();
+
+                System.out.println(f2.getAbsolutePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }*/
 
         listView.setAdapter(cursorAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.List;
 
 import handler.CalendarHandler;
 import handler.DbHandler;
@@ -54,10 +55,10 @@ public class MessageActivity extends Activity {
             SQLiteDatabase db = handler.getWritableDatabase();
             Calendar begDay = Calendar.getInstance();
             Calendar endDay;
-            begDay.set(Calendar.HOUR, 0);
+            begDay.set(Calendar.HOUR_OF_DAY, 0);
             begDay.set(Calendar.MINUTE, 0);
             begDay.set(Calendar.SECOND, 0);
-            begDay.set(Calendar.MILLISECOND, 0);
+            begDay.set(Calendar.MILLISECOND, 1);
 
             begDay.add(Calendar.DAY_OF_MONTH, 1);
             endDay = (Calendar) begDay.clone();
@@ -70,8 +71,15 @@ public class MessageActivity extends Activity {
                     " AND " + endDay.getTimeInMillis() +
                     " ORDER BY " + DbHandler.VisitsEntry.KEY_DATA_BEG;
 
+
+           // System.out.println(CalendarHandler.milisToFullDate(begDay.getTimeInMillis()) + " " + begDay.getTimeInMillis());
+           // System.out.println(CalendarHandler.milisToFullDate(endDay.getTimeInMillis()) + " " + endDay.getTimeInMillis());
+
             Cursor messageCursor = db.rawQuery(query, null);
             // Find ListView to populate
+
+
+
             ListView messageItems = (ListView) findViewById(R.id.messagelistView);
             messageCursorAdapter = new MessageCursorAdapter(this, messageCursor, 0);
             messageItems.setAdapter(messageCursorAdapter);
@@ -90,6 +98,7 @@ public class MessageActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_message, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -101,9 +110,9 @@ public class MessageActivity extends Activity {
     }
 
     private void MyOnItemClick(View view, int position, long id) {
-        System.out.println("pozycja "+position);
+        System.out.println("pozycja " + position);
         Visit visit = VisitsHandler.toVisit((Cursor) messageCursorAdapter.getItem(position), 0);
-        System.out.println("halo"+visit);
+        System.out.println("halo" + visit);
         Patient patient = patientsHandler.getPatient(visit.getPatient().toString());
 
         Uri uri = Uri.parse("smsto:" + patient.getPhone());
@@ -115,7 +124,6 @@ public class MessageActivity extends Activity {
                 + " Zapraszamy.";
         smsIntent.putExtra("sms_body", smsBody);
         startActivity(smsIntent);
-
 
 
         System.out.println("wizyta " + patient);

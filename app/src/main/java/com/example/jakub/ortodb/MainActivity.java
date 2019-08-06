@@ -16,6 +16,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.provider.ContactsContract;
 import android.support.v4.app.NotificationCompat;
@@ -33,6 +34,9 @@ import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -48,6 +52,8 @@ import handler.VisitsHandler;
 
 import android.app.ActionBar;
 import android.widget.Toast;
+
+import static android.os.Environment.*;
 
 
 public class MainActivity extends Activity {
@@ -117,25 +123,25 @@ public class MainActivity extends Activity {
         progressBar = (ProgressBar) findViewById(R.id.progressBarLoading);
 
 
-        /*{ get backup file ;)
-            String str = Environment.getExternalStorageDirectory().getPath() + "/backupname.db";
-            File f = new File(str);
-            File f2 = this.getDatabasePath(DbHandler.DATABASE_NAME);
-            try {
-                FileInputStream fis = new FileInputStream(f);
-                byte[] data = new byte[(int) f.length()];
-                fis.read(data);
-                fis.close();
-
-                FileOutputStream fos = new FileOutputStream(f2);
-                fos.write(data);
-                fos.close();
-
-                System.out.println(f2.getAbsolutePath());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }*/
+//        { //get backup file ;)
+//            String str = getExternalStorageDirectory().getPath() + "/backupname.db";
+//            File f = new File(str);
+//            File f2 = this.getDatabasePath(DbHandler.DATABASE_NAME);
+//            try {
+//                FileInputStream fis = new FileInputStream(f);
+//                byte[] data = new byte[(int) f.length()];
+//                fis.read(data);
+//                fis.close();
+//
+//                FileOutputStream fos = new FileOutputStream(f2);
+//                fos.write(data);
+//                fos.close();
+//
+//                System.out.println(f2.getAbsolutePath());
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         listView.setAdapter(cursorAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

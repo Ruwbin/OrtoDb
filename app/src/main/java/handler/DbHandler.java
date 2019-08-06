@@ -93,15 +93,15 @@ public class DbHandler extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL(PatientEntry.TABLE_CREATE);
-        //db.execSQL(VisitsEntry.TABLE_CREATE);
+        db.execSQL(PatientEntry.TABLE_CREATE);
+        db.execSQL(VisitsEntry.TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-       // db.execSQL("DROP TABLE IF EXISTS " + PatientEntry.TABLE_NAME);
-       // db.execSQL("DROP TABLE IF EXISTS " + VisitsEntry.TABLE_NAME);
-       // onCreate(db);
+        db.execSQL("DROP TABLE IF EXISTS " + PatientEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + VisitsEntry.TABLE_NAME);
+        onCreate(db);
 
     }
 
